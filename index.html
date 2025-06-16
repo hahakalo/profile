@@ -143,7 +143,7 @@
         <div id="nebula3" class="nebula"></div>
     </div>
 
-    <header class="sticky top-4 z-50">
+    <header id="main-header" class="sticky top-4 z-50">
         <nav id="main-nav" class="floating-nav container max-w-3xl mx-auto rounded-full px-4 py-2 flex justify-between items-center">
             <div class="flex items-center gap-2">
                  <a href="https://github.com/maboloshi/github-chinese?tab=readme-ov-file" target="_blank" class="p-2 rounded-full hover:bg-white/10 transition-colors">
@@ -193,7 +193,7 @@
         <section id="skills" class="section-padding py-12" style="background-color: var(--bg-card);">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16 fade-in-up">
-                    <h2 class="section-title text-4xl font-bold" style="color: var(--text-bright);">Skills</h2>
+                    <h2 class="section-title text-4xl font-bold" style="color: var(--text-bright);">My Skills</h2>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                     <div class="fade-in-up skill-card">
@@ -251,7 +251,7 @@
         <section id="projects" class="section-padding">
              <div class="container mx-auto px-6">
                 <div class="text-center mb-16 fade-in-up">
-                    <h2 class="section-title text-4xl font-bold" style="color: var(--text-bright);">Projects</h2>
+                    <h2 class="section-title text-4xl font-bold" style="color: var(--text-bright);">My Projects</h2>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <div class="group project-card fade-in-up">
@@ -303,18 +303,17 @@
             </div>
         </section>
 
-        <!-- ======================================================= -->
-        <!--               联系方式部分 (简约版)                   -->
-        <!-- ======================================================= -->
         <section id="contact" class="section-padding text-center" style="background-color: var(--bg-card);">
              <div class="container mx-auto px-6">
                 <div class="fade-in-up max-w-2xl mx-auto">
                      <h2 class="section-title text-4xl font-bold" style="color: var(--text-bright);">Get In Touch</h2>
                     <p class="mt-4 text-lg" style="color: var(--text-light);">
-                        I'm open to new challenges and collaboration. Looking forward to hearing from you.
+                        I'm open to new challenges and collaboration. I look forward to hearing from you.
                     </p>
                     <div class="mt-8">
-                        <div class="inline-flex justify-center items-center gap-3 p-3 rounded-lg border-2 border-dashed" style="border-color: rgba(255,255,255,0.2);">
+                        <div class="inline-flex justify-center items-center gap-4 p-3 rounded-lg border-2 border-dashed" style="border-color: rgba(255,255,255,0.2);">
+                            <!-- 在这里替换成你的可爱头像链接 -->
+                            <img src="https://i.postimg.cc/SsDZtZkT/image.png" alt="Contact Avatar" class="h-10 w-10 rounded-full">
                             <span id="email-address" class="text-lg font-mono text-gray-300">pangkarol@gmail.com</span>
                             <button id="copy-button" title="Copy to clipboard" class="p-2 rounded-md hover:bg-gray-700 transition-colors">
                                 <svg id="copy-icon" class="h-6 w-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
@@ -328,8 +327,12 @@
     </main>
     
     <footer class="text-center p-8 relative z-10 text-sm" style="color: var(--text-light);">
-        <p>&copy;  All Rights Reserved.</p>
+        <p>&copy; 2024 Karol Pang. All Rights Reserved.</p>
     </footer>
+
+    <a href="#" id="to-top-button" class="fixed bottom-8 right-8 z-50 w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-opacity duration-300 opacity-0 pointer-events-none" style="background-color: var(--bg-card); border: 1px solid var(--border-color);">
+        <svg class="w-6 h-6" style="color: var(--text-light);" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/></svg>
+    </a>
 
     <!-- JavaScript 动画脚本 -->
     <script>
@@ -345,15 +348,24 @@
             }, { threshold: 0.15 });
             document.querySelectorAll('.fade-in-up').forEach(el => fadeInObserver.observe(el));
 
-            // Nav effect on scroll
             const header = document.getElementById('main-header');
-            if (header) {
-                window.addEventListener('scroll', () => {
+            const toTopButton = document.getElementById('to-top-button');
+
+            window.addEventListener('scroll', () => {
+                if (header) {
                     header.classList.toggle('nav-scrolled', window.scrollY > 50);
-                });
-            }
+                }
+                if (toTopButton) {
+                    if (window.scrollY > 300) {
+                        toTopButton.classList.remove('opacity-0', 'pointer-events-none');
+                        toTopButton.classList.add('opacity-100', 'pointer-events-auto');
+                    } else {
+                        toTopButton.classList.remove('opacity-100', 'pointer-events-auto');
+                        toTopButton.classList.add('opacity-0', 'pointer-events-none');
+                    }
+                }
+            });
             
-            // Active nav link on scroll
             const sections = document.querySelectorAll('section[id]');
             const navLinks = document.querySelectorAll('.nav-link');
             const navIndicator = document.getElementById('nav-indicator');
@@ -393,7 +405,6 @@
             window.addEventListener('resize', activateNavLink);
             activateNavLink();
 
-            // Colorful Galaxy background
             const galaxyBg = document.getElementById('galaxy-bg');
             if (galaxyBg) {
                 const starCount = 200;
@@ -415,7 +426,6 @@
                 }
             }
             
-            // Email copy functionality
             const copyButton = document.getElementById('copy-button');
             const emailSpan = document.getElementById('email-address');
             const copyIcon = document.getElementById('copy-icon');

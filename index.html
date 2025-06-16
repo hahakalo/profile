@@ -6,7 +6,7 @@
     <!-- ======================================================= -->
     <!--                      网站标题                          -->
     <!-- ======================================================= -->
-    <title>Karol Pang - Personal Portfolio</title>
+    <title>Karol Pang</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,7 +30,7 @@
             overflow-x: hidden; 
         }
         /* 动态星空背景 */
-        #star-bg {
+        #galaxy-bg {
             position: fixed;
             top: 0;
             left: 0;
@@ -50,33 +50,47 @@
             50% { opacity: 1; }
         }
 
-        /* 悬浮发光导航栏 */
-        .solid-nav {
-            background-color: rgba(13, 17, 23, 0.6);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid transparent;
-            transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        /* ======================================================= */
+        /* 悬浮“胶囊”式导航栏样式 (开始)                  */
+        /* ======================================================= */
+        .floating-nav {
+            background: rgba(22, 27, 34, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
             position: relative;
         }
-        .solid-nav::before {
+        /* 导航栏内部的辉光效果 */
+        .floating-nav::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--accent-blue), var(--accent-teal), var(--accent-indigo));
-            opacity: 0.7;
-            filter: blur(2px);
+            inset: 0;
+            border-radius: 9999px;
+            padding: 1px;
+            background: linear-gradient(120deg, var(--accent-blue), var(--accent-teal));
+            -webkit-mask: 
+                linear-gradient(#fff 0 0) content-box, 
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0.5;
+            pointer-events: none;
         }
-        .nav-scrolled {
-            background-color: rgba(22, 27, 34, 0.8);
-            border-color: var(--border-color);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        /* 导航链接的动态指示器 */
+        #nav-indicator {
+            position: absolute;
+            height: 36px;
+            background-color: rgba(59, 130, 246, 0.2);
+            border-radius: 9999px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: -1;
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
         }
+        /* ======================================================= */
+        /* 悬浮“胶囊”式导航栏样式 (结束)                  */
+        /* ======================================================= */
 
-        /* 卡片立体效果 */
         .card-item {
             background-color: var(--bg-card);
             border: 1px solid var(--border-color);
@@ -100,21 +114,14 @@
             border-color: var(--accent-blue);
         }
 
-
         .section-title::after {
             content: ''; display: block; margin: 12px auto 0; width: 70px; height: 4px;
             border-radius: 2px;
             background: linear-gradient(90deg, var(--accent-blue), var(--accent-teal), var(--accent-indigo));
         }
-        /* ======================================================= */
-        /* 通过修改这里的 padding 值来调整所有分区模块的上下高度         */
-        /* ======================================================= */
-        .section-padding { 
-            padding-top: 6rem; 
-            padding-bottom: 6rem; 
-        }
+        .section-padding { padding-top: 6rem; padding-bottom: 6rem; }
         .nav-link.active {
-            color: var(--text-bright); background-color: rgba(59, 130, 246, 0.2); border-radius: 9999px;
+            color: var(--text-bright);
         }
         .fade-in-up {
             opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out;
@@ -124,60 +131,53 @@
     </style>
 </head>
 <body>
-    <div id="star-bg"></div>
+    <div id="galaxy-bg">
+        <div id="nebula1" class="nebula"></div>
+        <div id="nebula2" class="nebula"></div>
+        <div id="nebula3" class="nebula"></div>
+    </div>
 
     <!-- ======================================================= -->
     <!--                      顶部导航栏                         -->
     <!-- ======================================================= -->
-    <header id="main-header" class="solid-nav sticky top-0 z-50">
-        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <a href="#">
-                <img class="h-10 w-10 rounded-full object-cover" src="https://tinypic.host/images/2025/06/16/0cf26af9ad4260406b54d682e1ac9098.png" alt="Logo">
+    <header class="sticky top-4 z-50">
+        <nav id="main-nav" class="floating-nav container max-w-xl mx-auto rounded-full px-4 py-2 flex justify-between items-center">
+            <!-- 社交图标 -->
+            <div class="flex items-center gap-2">
+                 <a href="https://github.com/maboloshi/github-chinese?tab=readme-ov-file" target="_blank" class="p-2 rounded-full hover:bg-white/10 transition-colors">
+                    <svg class="h-5 w-5" style="color: var(--text-light);" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                 </a>
+                 <a href="[Your_LinkedIn_Link]" target="_blank" class="p-2 rounded-full hover:bg-white/10 transition-colors">
+                    <svg class="h-5 w-5" style="color: var(--text-light);" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V9a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                 </a>
+            </div>
+            <!-- 导航链接 -->
+            <div id="nav-links" class="hidden md:flex space-x-2 items-center relative">
+                 <div id="nav-indicator"></div>
+                 <a href="#about" class="nav-link font-medium transition-all duration-300 px-4 py-1.5" style="color: var(--text-light);">About</a>
+                 <a href="#skills" class="nav-link font-medium transition-all duration-300 px-4 py-1.5" style="color: var(--text-light);">Skills</a>
+                 <a href="#projects" class="nav-link font-medium transition-all duration-300 px-4 py-1.5" style="color: var(--text-light);">Projects</a>
+                 <a href="#contact" class="nav-link font-medium transition-all duration-300 px-4 py-1.5" style="color: var(--text-light);">Contact</a>
+            </div>
+             <!-- 下载按钮 -->
+             <a href="[Your_Resume.pdf]" target="_blank" class="text-white text-sm font-semibold bg-blue-600 px-4 py-2 rounded-full shadow-lg hover:bg-blue-700 hover:scale-105 transition-all duration-300">
+                Download CV
             </a>
-            <div class="hidden md:flex space-x-2 items-center">
-                <a href="#about" class="nav-link font-medium transition-all duration-300 px-3 py-1.5" style="color: var(--text-light);">About</a>
-                <a href="#skills" class="nav-link font-medium transition-all duration-300 px-3 py-1.5" style="color: var(--text-light);">Skills</a>
-                <a href="#projects" class="nav-link font-medium transition-all duration-300 px-3 py-1.5" style="color: var(--text-light);">Projects</a>
-                <a href="#contact" class="nav-link font-medium transition-all duration-300 px-3 py-1.5" style="color: var(--text-light);">Contact</a>
-                <a href="[Your_Resume.pdf]" target="_blank" class="hover:scale-105 transition-all duration-300 ml-4">
-                    <img src="https://placehold.co/110x36/3b82f6/ffffff?text=Download+CV" alt="Download CV" class="h-9">
-                </a>
-            </div>
-            <div class="md:hidden">
-                <button style="color: var(--text-light);">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-                </button>
-            </div>
         </nav>
     </header>
 
     <!-- 主体内容 -->
     <main class="relative z-10">
-
-        <!-- ======================================================= -->
-        <!--                个人介绍部分 (Hero Section)               -->
-        <!-- ======================================================= -->
         <section id="about" class="section-padding flex items-center">
             <div class="container mx-auto px-6">
-                <!-- 更新了网格布局以更好地居中文本，从 3 栏改为 5 栏 -->
-                <div class="grid md:grid-cols-4 gap-10 items-center">
-                    <!-- 文字内容（占 3 栏）-->
+                <div class="grid md:grid-cols-5 gap-10 items-center">
                     <div class="md:col-span-3 fade-in-up text-center md:text-left">
                         <h1 class="text-5xl md:text-7xl font-extrabold leading-tight" style="color: var(--text-bright);">Hello, <br>I'm Karol Pang</h1>
                         <h2 class="mt-4 text-2xl md:text-3xl font-medium" style="color: var(--accent-blue);">Software Engineer | Full-Stack Developer</h2>
                         <p class="mt-8 max-w-2xl text-lg mx-auto md:mx-0" style="color: var(--text-light);">
                             I am passionate about building beautiful and functional web applications using modern technologies. Currently seeking new opportunities to contribute to a team's technical innovation.
                         </p>
-                        <div class="mt-8 flex gap-4 justify-center md:justify-start">
-                            <a href="https://github.com/maboloshi/github-chinese?tab=readme-ov-file" target="_blank" class="transition-colors" style="color: var(--text-light); --hover-color: var(--text-bright);" onmouseover="this.style.color=this.style.getPropertyValue('--hover-color')" onmouseout="this.style.color='var(--text-light)'" aria-label="GitHub Profile">
-                               <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                            </a>
-                            <a href="[Your_LinkedIn_Link]" target="_blank" class="transition-colors" style="color: var(--text-light); --hover-color: var(--text-bright);" onmouseover="this.style.color=this.style.getPropertyValue('--hover-color')" onmouseout="this.style.color='var(--text-light)'" aria-label="LinkedIn Profile">
-                               <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                            </a>
-                        </div>
                     </div>
-                    <!-- 头像部分（占 2 栏）-->
                     <div class="md:col-span-2 flex justify-center md:justify-end fade-in-up" style="transition-delay: 100ms;">
                         <div class="relative w-64 h-64 lg:w-72 lg:h-72">
                             <div class="absolute inset-0 rounded-full blur-xl" style="background: linear-gradient(45deg, var(--accent-blue), var(--accent-teal)); opacity: 0.6;"></div>
@@ -191,16 +191,12 @@
             </div>
         </section>
 
-        <!-- ======================================================= -->
-        <!--              技能栈部分 (颜色块背景)                  -->
-        <!-- ======================================================= -->
         <section id="skills" class="section-padding" style="background-color: var(--bg-card);">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16 fade-in-up">
-                    <h2 class="section-title text-4xl font-bold" style="color: var(--text-bright);">My Skills</h2>
+                    <h2 class="section-title text-4xl font-bold" style="color: var(--text-bright);">Skills</h2>
                 </div>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                    <!-- 技能卡片 -->
                     <div class="p-6 text-center fade-in-up card-item" style="background-color: var(--bg-dark);">
                         <h3 class="text-xl font-bold mb-4" style="color: var(--text-bright);">Frontend</h3>
                         <ul class="space-y-2 text-sm">
@@ -210,7 +206,6 @@
                             <li>Tailwind CSS</li>
                         </ul>
                     </div>
-                     <!-- 技能卡片 -->
                     <div class="p-6 text-center fade-in-up card-item" style="transition-delay: 100ms; background-color: var(--bg-dark);">
                         <h3 class="text-xl font-bold mb-4" style="color: var(--text-bright);">Backend</h3>
                          <ul class="space-y-2 text-sm">
@@ -220,7 +215,6 @@
                             <li>GraphQL</li>
                         </ul>
                     </div>
-                     <!-- 技能卡片 -->
                     <div class="p-6 text-center fade-in-up card-item" style="transition-delay: 200ms; background-color: var(--bg-dark);">
                         <h3 class="text-xl font-bold mb-4" style="color: var(--text-bright);">Databases</h3>
                         <ul class="space-y-2 text-sm">
@@ -230,7 +224,6 @@
                             <li>Database Design</li>
                         </ul>
                     </div>
-                     <!-- 技能卡片 -->
                     <div class="p-6 text-center fade-in-up card-item" style="transition-delay: 300ms; background-color: var(--bg-dark);">
                         <h3 class="text-xl font-bold mb-4" style="color: var(--text-bright);">DevOps & Tools</h3>
                          <ul class="space-y-2 text-sm">
@@ -244,17 +237,12 @@
             </div>
         </section>
 
-        <!-- ======================================================= -->
-        <!--               项目经验部分 (默认背景)                   -->
-        <!-- ======================================================= -->
         <section id="projects" class="section-padding">
              <div class="container mx-auto px-6">
                 <div class="text-center mb-16 fade-in-up">
-                    <h2 class="section-title text-4xl font-bold" style="color: var(--text-bright);">My Projects</h2>
+                    <h2 class="section-title text-4xl font-bold" style="color: var(--text-bright);">Projects</h2>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    
-                    <!-- 项目卡片 1 -->
                     <div class="group project-card fade-in-up">
                         <a href="[Project_Demo_Link_1]" target="_blank" class="block">
                             <div class="overflow-hidden">
@@ -270,8 +258,6 @@
                             </div>
                         </a>
                     </div>
-                    
-                     <!-- 项目卡片 2 -->
                      <div class="group project-card fade-in-up" style="transition-delay: 100ms;">
                         <a href="[Project_Demo_Link_2]" target="_blank" class="block">
                              <div class="overflow-hidden">
@@ -287,8 +273,6 @@
                             </div>
                         </a>
                     </div>
-
-                    <!-- 项目卡片 3 -->
                     <div class="group project-card fade-in-up" style="transition-delay: 200ms;">
                         <a href="[Project_Demo_Link_3]" target="_blank" class="block">
                              <div class="overflow-hidden">
@@ -308,9 +292,6 @@
             </div>
         </section>
 
-        <!-- ======================================================= -->
-        <!--               联系方式部分 (颜色块背景)                 -->
-        <!-- ======================================================= -->
         <section id="contact" class="section-padding text-center" style="background-color: var(--bg-card);">
              <div class="container mx-auto px-6">
                 <div class="fade-in-up">
@@ -328,78 +309,94 @@
         </section>
     </main>
     
-    <!-- ======================================================= -->
-    <!--                       页面页脚                          -->
-    <!-- ======================================================= -->
     <footer class="text-center p-8 relative z-10 text-sm" style="color: var(--text-light);">
         <p>&copy; 2024 Karol Pang. All Rights Reserved.</p>
     </footer>
 
     <!-- JavaScript 动画脚本 -->
     <script>
-        // Fade-in animation
-        const fadeInObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    fadeInObserver.unobserve(entry.target); 
-                }
-            });
-        }, { threshold: 0.15 });
-        document.querySelectorAll('.fade-in-up').forEach(el => fadeInObserver.observe(el));
-
-        // Nav effect on scroll
-        const header = document.getElementById('main-header');
-        window.addEventListener('scroll', () => {
-            header.classList.toggle('nav-scrolled', window.scrollY > 50);
-        });
-        
-        // Active nav link on scroll
-        const sections = document.querySelectorAll('section[id]');
-        const navLinks = document.querySelectorAll('.nav-link');
-        const activateNavLink = () => {
-            let currentSectionId = '';
-            // A small offset from the bottom of the viewport
-            const scrollEndOffset = 50; 
-            
-            // Check if user is at the bottom of the page
-            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - scrollEndOffset) {
-                 currentSectionId = sections[sections.length - 1].getAttribute('id');
-            } else {
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    if (window.scrollY >= sectionTop - 150) { // Offset for better timing
-                        currentSectionId = section.getAttribute('id');
+        document.addEventListener('DOMContentLoaded', () => {
+            // Fade-in animation
+            const fadeInObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        fadeInObserver.unobserve(entry.target); 
                     }
                 });
+            }, { threshold: 0.15 });
+            document.querySelectorAll('.fade-in-up').forEach(el => fadeInObserver.observe(el));
+
+            // Nav effect on scroll
+            const header = document.getElementById('main-header');
+            if (header) {
+                window.addEventListener('scroll', () => {
+                    header.classList.toggle('nav-scrolled', window.scrollY > 50);
+                });
             }
+            
+            // Active nav link on scroll
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const navIndicator = document.getElementById('nav-indicator');
 
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${currentSectionId}`) {
-                    link.classList.add('active');
+            const activateNavLink = () => {
+                if (!navIndicator) return;
+
+                let currentSectionId = '';
+                const scrollEndOffset = 50; 
+                
+                if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - scrollEndOffset) {
+                     currentSectionId = sections[sections.length - 1].getAttribute('id');
+                } else {
+                    sections.forEach(section => {
+                        if (window.scrollY >= section.offsetTop - 150) {
+                            currentSectionId = section.getAttribute('id');
+                        }
+                    });
                 }
-            });
-        };
-        window.addEventListener('scroll', activateNavLink);
-        document.addEventListener('DOMContentLoaded', activateNavLink); // Run on page load
 
-        // Starfield background
-        const starBg = document.getElementById('star-bg');
-        const starCount = 150;
-        for (let i = 0; i < starCount; i++) {
-            const star = document.createElement('div');
-            star.classList.add('star');
-            const size = Math.random() * 2 + 1;
-            star.style.width = `${size}px`;
-            star.style.height = `${size}px`;
-            star.style.top = `${Math.random() * 100}%`;
-            star.style.left = `${Math.random() * 100}%`;
-            const duration = Math.random() * 2 + 1;
-            star.style.animationDuration = `${duration}s`;
-            star.style.animationDelay = `${Math.random() * duration}s`;
-            starBg.appendChild(star);
-        }
+                let activeLink = null;
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${currentSectionId}`) {
+                        link.classList.add('active');
+                        activeLink = link;
+                    }
+                });
+
+                if (activeLink) {
+                     navIndicator.style.width = `${activeLink.offsetWidth}px`;
+                     navIndicator.style.left = `${activeLink.offsetLeft}px`;
+                }
+            };
+            
+            window.addEventListener('scroll', activateNavLink);
+            window.addEventListener('resize', activateNavLink);
+            activateNavLink();
+
+            // Colorful Galaxy background
+            const galaxyBg = document.getElementById('galaxy-bg');
+            if (galaxyBg) {
+                const starCount = 200;
+                const colors = ['var(--accent-blue)', 'var(--accent-teal)', 'var(--accent-indigo)', '#ffffff'];
+                for (let i = 0; i < starCount; i++) {
+                    const star = document.createElement('div');
+                    star.classList.add('star');
+                    const size = Math.random() * 2.5 + 1;
+                    star.style.width = `${size}px`;
+                    star.style.height = `${size}px`;
+                    star.style.top = `${Math.random() * 100}%`;
+                    star.style.left = `${Math.random() * 100}%`;
+                    star.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    star.style.boxShadow = `0 0 ${size * 2}px ${star.style.background}`;
+                    const duration = Math.random() * 3 + 2;
+                    star.style.animationDuration = `${duration}s`;
+                    star.style.animationDelay = `${Math.random() * duration}s`;
+                    galaxyBg.appendChild(star);
+                }
+            }
+        });
     </script>
 </body>
 </html>

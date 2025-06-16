@@ -110,8 +110,8 @@
         /* 通过修改这里的 padding 值来调整所有分区模块的上下高度         */
         /* ======================================================= */
         .section-padding { 
-            padding-top: 3rem; 
-            padding-bottom: 3rem; 
+            padding-top: 6rem; 
+            padding-bottom: 6rem; 
         }
         .nav-link.active {
             color: var(--text-bright); background-color: rgba(59, 130, 246, 0.2); border-radius: 9999px;
@@ -159,8 +159,10 @@
         <!-- ======================================================= -->
         <section id="about" class="section-padding flex items-center">
             <div class="container mx-auto px-6">
-                <div class="grid md:grid-cols-2 gap-10 items-center">
-                    <div class="fade-in-up text-center md:text-left">
+                <!-- 更新了网格布局以更好地居中文本，从 3 栏改为 5 栏 -->
+                <div class="grid md:grid-cols-5 gap-10 items-center">
+                    <!-- 文字内容（占 3 栏）-->
+                    <div class="md:col-span-3 fade-in-up text-center md:text-left">
                         <h1 class="text-5xl md:text-7xl font-extrabold leading-tight" style="color: var(--text-bright);">Hello, <br>I'm Karol Pang</h1>
                         <h2 class="mt-4 text-2xl md:text-3xl font-medium" style="color: var(--accent-blue);">Software Engineer | Full-Stack Developer</h2>
                         <p class="mt-8 max-w-2xl text-lg mx-auto md:mx-0" style="color: var(--text-light);">
@@ -175,7 +177,8 @@
                             </a>
                         </div>
                     </div>
-                    <div class="flex justify-center md:justify-end fade-in-up" style="transition-delay: 100ms;">
+                    <!-- 头像部分（占 2 栏）-->
+                    <div class="md:col-span-2 flex justify-center md:justify-end fade-in-up" style="transition-delay: 100ms;">
                         <div class="relative w-64 h-64 lg:w-72 lg:h-72">
                             <div class="absolute inset-0 rounded-full blur-xl" style="background: linear-gradient(45deg, var(--accent-blue), var(--accent-teal)); opacity: 0.6;"></div>
                             <img src="https://placehold.co/300x300/1f2937/d1d5db?text=Your+Headshot" 

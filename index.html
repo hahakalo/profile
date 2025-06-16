@@ -6,7 +6,7 @@
     <!-- ======================================================= -->
     <!--                      网站标题                          -->
     <!-- ======================================================= -->
-    <title>Karol Pang - Personal Portfolio</title>
+    <title>Karol Pang</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -53,9 +53,10 @@
             /* Updated to a three-color gradient */
             background: linear-gradient(90deg, var(--accent-blue), var(--accent-teal), var(--accent-indigo));
         }
+        /* 调整了此处的 padding 值以缩小间距 */
         .section-padding {
-            padding-top: 7rem;
-            padding-bottom: 7rem;
+            padding-top: 3rem;
+            padding-bottom: 3rem;
         }
     </style>
 </head>
@@ -64,10 +65,10 @@
     <!--                      顶部导航栏                         -->
     <!-- ======================================================= -->
     <header class="solid-nav sticky top-0 z-50">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <!-- 你的名字 -->
-            <a href="#" class="text-xl font-bold" style="color: var(--text-bright);">
-                Karol Pang
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <!-- logo/头像: 替换下面的图片链接 -->
+            <a href="#">
+                <img class="h-10 w-10 rounded-full object-cover" src="https://tinypic.host/images/2025/06/16/0cf26af9ad4260406b54d682e1ac9098.png" alt="Logo">
             </a>
             <div class="hidden md:flex space-x-6 items-center">
                 <!-- 导航链接 -->
@@ -76,7 +77,7 @@
                 <a href="#projects" class="font-medium transition-colors duration-300" style="color: var(--text-light); --hover-color: var(--text-bright);" onmouseover="this.style.color=this.style.getPropertyValue('--hover-color')" onmouseout="this.style.color='var(--text-light)'">Projects</a>
                 <a href="#contact" class="font-medium transition-colors duration-300" style="color: var(--text-light); --hover-color: var(--text-bright);" onmouseover="this.style.color=this.style.getPropertyValue('--hover-color')" onmouseout="this.style.color='var(--text-light)'">Contact</a>
                 <!-- 简历下载链接：将 [Your_Resume.pdf] 替换成你的简历文件路径 -->
-                <a href="[Your_Resume.pdf]" target="_blank" class="text-white px-4 py-2 rounded-md shadow-lg hover:scale-105 transition-all text-sm duration-300" style="background-color: var(--accent-blue);">Download CV</a>
+                <a href="[Your_Resume.pdf]" target="_blank" class="text-white px-4 py-2 rounded-md shadow-lg hover:scale-105 transition-all text-sm duration-300" style="background-color: var(--accent-blue);">Download</a>
             </div>
             <!-- 移动端菜单按钮，功能可按需添加 -->
             <div class="md:hidden">
@@ -94,24 +95,42 @@
         <!--                个人介绍部分 (Hero Section)               -->
         <!-- ======================================================= -->
         <section id="about" class="min-h-[80vh] flex items-center">
-            <div class="max-w-4xl fade-in-up">
-                <!-- 你的名字 -->
-                <h1 class="text-5xl md:text-7xl font-extrabold leading-tight" style="color: var(--text-bright);">Hello, I'm Karol Pang</h1>
-                <!-- 你的职位/头衔 -->
-                <h2 class="mt-4 text-2xl md:text-3xl font-medium" style="color: var(--accent-blue);">Software Engineer | Full-Stack Developer</h2>
-                <!-- 你的个人简介 -->
-                <p class="mt-8 max-w-2xl text-lg" style="color: var(--text-light);">
-                    I am passionate about building beautiful and functional web applications using modern technologies. Currently seeking new opportunities to contribute to a team's technical innovation.
-                </p>
-                 <div class="mt-8 flex gap-4">
-                    <!-- GitHub 链接：将 [Your_GitHub_Link] 替换成你的链接 -->
-                    <a href="[Your_GitHub_Link]" target="_blank" class="transition-colors" style="color: var(--text-light); --hover-color: var(--text-bright);" onmouseover="this.style.color=this.style.getPropertyValue('--hover-color')" onmouseout="this.style.color='var(--text-light)'" aria-label="GitHub Profile">
-                       <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                    </a>
-                    <!-- LinkedIn 链接：将 [Your_LinkedIn_Link] 替换成你的链接 -->
-                    <a href="[Your_LinkedIn_Link]" target="_blank" class="transition-colors" style="color: var(--text-light); --hover-color: var(--text-bright);" onmouseover="this.style.color=this.style.getPropertyValue('--hover-color')" onmouseout="this.style.color='var(--text-light)'" aria-label="LinkedIn Profile">
-                       <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                    </a>
+            <div class="grid md:grid-cols-3 gap-10 items-center">
+                <!-- 文字内容 (左侧) -->
+                <div class="md:col-span-2 fade-in-up">
+                    <!-- 你的名字 -->
+                    <h1 class="text-5xl md:text-7xl font-extrabold leading-tight" style="color: var(--text-bright);">Hello, </h1>
+                    <h1 class="text-5xl md:text-7xl font-extrabold leading-tight" style="color: var(--text-bright);">I'm Karol Pang</h1>
+                    <!-- 你的职位/头衔 -->
+                    <h2 class="mt-4 text-2xl md:text-3xl font-medium" style="color: var(--accent-blue);">Software Engineer | Full-Stack Developer</h2>
+                    <!-- 你的个人简介 -->
+                    <p class="mt-8 max-w-2xl text-lg" style="color: var(--text-light);">
+                        I am passionate about building beautiful and functional web applications using modern technologies. Currently seeking new opportunities to contribute to a team's technical innovation.
+                    </p>
+                    <div class="mt-8 flex gap-4">
+                        <!-- GitHub 链接：将 [Your_GitHub_Link] 替换成你的链接 -->
+                        <a href="https://github.com/maboloshi/github-chinese?tab=readme-ov-file" target="_blank" class="transition-colors" style="color: var(--text-light); --hover-color: var(--text-bright);" onmouseover="this.style.color=this.style.getPropertyValue('--hover-color')" onmouseout="this.style.color='var(--text-light)'" aria-label="GitHub Profile">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                        </a>
+                        <!-- LinkedIn 链接：将 [Your_LinkedIn_Link] 替换成你的链接 -->
+                        <a href="[Your_LinkedIn_Link]" target="_blank" class="transition-colors" style="color: var(--text-light); --hover-color: var(--text-bright);" onmouseover="this.style.color=this.style.getPropertyValue('--hover-color')" onmouseout="this.style.color='var(--text-light)'" aria-label="LinkedIn Profile">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                        </a>
+                    </div>
+                </div>
+                <!-- ======================================================= -->
+                <!--                头像部分 (右侧)                        -->
+                <!-- ======================================================= -->
+                <div class="flex justify-center md:justify-end fade-in-up" style="transition-delay: 100ms;">
+                    <div class="relative w-64 h-64 lg:w-72 lg:h-72">
+                         <!-- 彩色光环背景 -->
+                        <div class="absolute inset-0 rounded-full blur-xl" style="background: linear-gradient(45deg, var(--accent-blue), var(--accent-teal)); opacity: 0.6;"></div>
+                        <!-- 头像图片：将下面的链接替换成你的图片地址 -->
+                        <img src="https://placehold.co/300x300/1f2937/d1d5db?text=Your+Headshot" 
+                             alt="Karol Pang Headshot" 
+                             class="relative w-full h-full rounded-full object-cover border-4" 
+                             style="border-color: var(--bg-card);">
+                    </div>
                 </div>
             </div>
         </section>
@@ -257,8 +276,9 @@
         <!-- ======================================================= -->
         <!--                     联系方式部分                        -->
         <!-- ======================================================= -->
-        <section id="contact" class="text-center section-padding">
-            <div class="rounded-lg p-10 md:p-16 fade-in-up" style="background-color: var(--bg-card); border: 1px solid var(--border-color);">
+        <section id="contact" class="section-padding">
+            <!-- 添加了 'text-center' 类来修复居中问题 -->
+            <div class="text-center rounded-lg p-10 md:p-16 fade-in-up" style="background-color: var(--bg-card); border: 1px solid var(--border-color);">
                  <h2 class="text-4xl font-bold" style="color: var(--text-bright);">Get In Touch</h2>
                 <p class="mt-4 text-lg max-w-xl mx-auto" style="color: var(--text-light);">
                     I'm open to new challenges and collaboration. I look forward to hearing from you.
@@ -278,7 +298,7 @@
     <!-- ======================================================= -->
     <footer class="text-center p-8 relative z-10 text-sm" style="color: var(--text-light);">
         <!-- 修改你的名字和年份 -->
-        <p>&copy; 2024 Karol Pang. All Rights Reserved.</p>
+        <p>&copy; All Rights Reserved.</p>
     </footer>
 
     <!-- JavaScript 动画脚本，一般无需修改 -->

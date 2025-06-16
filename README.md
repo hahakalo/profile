@@ -1,2 +1,302 @@
 # profile
-Personal Page
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- ======================================================= -->
+    <!--                      网站标题                          -->
+    <!-- ======================================================= -->
+    <title>Karol Pang - Personal Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* 页面样式定义，一般无需修改 */
+        :root {
+            --bg-dark: #111827;      
+            --bg-card: #1f2937;      
+            --accent-blue: #3b82f6;   
+            --accent-teal: #2dd4bf;   
+            --accent-indigo: #818cf8; /* New third accent color */
+            --text-light: #d1d5db;   
+            --text-bright: #f9fafb;  
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+        }
+        .solid-nav {
+            background-color: rgba(31, 41, 55, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            margin: 12px auto 0;
+            width: 70px;
+            height: 4px;
+            border-radius: 2px;
+            /* Updated to a three-color gradient */
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-teal), var(--accent-indigo));
+        }
+        .section-padding {
+            padding-top: 7rem;
+            padding-bottom: 7rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- ======================================================= -->
+    <!--                      顶部导航栏                         -->
+    <!-- ======================================================= -->
+    <header class="solid-nav sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- 你的名字 -->
+            <a href="#" class="text-xl font-bold" style="color: var(--text-bright);">
+                Karol Pang
+            </a>
+            <div class="hidden md:flex space-x-6 items-center">
+                <!-- 导航链接 -->
+                <a href="#about" class="font-medium transition-colors duration-300" style="color: var(--text-light); --hover-color: var(--text-bright);" onmouseover="this.style.color=this.style.getPropertyValue('--hover-color')" onmouseout="this.style.color='var(--text-light)'">About</a>
+                <a href="#skills" class="font-medium transition-colors duration-300" style="color: var(--text-light); --hover-color: var(--text-bright);" onmouseover="this.style.color=this.style.getPropertyValue('--hover-color')" onmouseout="this.style.color='var(--text-light)'">Skills</a>
+                <a href="#projects" class="font-medium transition-colors duration-300" style="color: var(--text-light); --hover-color: var(--text-bright);" onmouseover="this.style.color=this.style.getPropertyValue('--hover-color')" onmouseout="this.style.color='var(--text-light)'">Projects</a>
+                <a href="#contact" class="font-medium transition-colors duration-300" style="color: var(--text-light); --hover-color: var(--text-bright);" onmouseover="this.style.color=this.style.getPropertyValue('--hover-color')" onmouseout="this.style.color='var(--text-light)'">Contact</a>
+                <!-- 简历下载链接：将 [Your_Resume.pdf] 替换成你的简历文件路径 -->
+                <a href="[Your_Resume.pdf]" target="_blank" class="text-white px-4 py-2 rounded-md shadow-lg hover:scale-105 transition-all text-sm duration-300" style="background-color: var(--accent-blue);">Download CV</a>
+            </div>
+            <!-- 移动端菜单按钮，功能可按需添加 -->
+            <div class="md:hidden">
+                <button style="color: var(--text-light);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 主体内容 -->
+    <main class="container mx-auto px-6 relative z-10">
+
+        <!-- ======================================================= -->
+        <!--                个人介绍部分 (Hero Section)               -->
+        <!-- ======================================================= -->
+        <section id="about" class="min-h-[80vh] flex items-center">
+            <div class="max-w-4xl fade-in-up">
+                <!-- 你的名字 -->
+                <h1 class="text-5xl md:text-7xl font-extrabold leading-tight" style="color: var(--text-bright);">Hello, I'm Karol Pang</h1>
+                <!-- 你的职位/头衔 -->
+                <h2 class="mt-4 text-2xl md:text-3xl font-medium" style="color: var(--accent-blue);">Software Engineer | Full-Stack Developer</h2>
+                <!-- 你的个人简介 -->
+                <p class="mt-8 max-w-2xl text-lg" style="color: var(--text-light);">
+                    I am passionate about building beautiful and functional web applications using modern technologies. Currently seeking new opportunities to contribute to a team's technical innovation.
+                </p>
+                 <div class="mt-8 flex gap-4">
+                    <!-- GitHub 链接：将 [Your_GitHub_Link] 替换成你的链接 -->
+                    <a href="[Your_GitHub_Link]" target="_blank" class="transition-colors" style="color: var(--text-light); --hover-color: var(--text-bright);" onmouseover="this.style.color=this.style.getPropertyValue('--hover-color')" onmouseout="this.style.color='var(--text-light)'" aria-label="GitHub Profile">
+                       <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                    </a>
+                    <!-- LinkedIn 链接：将 [Your_LinkedIn_Link] 替换成你的链接 -->
+                    <a href="[Your_LinkedIn_Link]" target="_blank" class="transition-colors" style="color: var(--text-light); --hover-color: var(--text-bright);" onmouseover="this.style.color=this.style.getPropertyValue('--hover-color')" onmouseout="this.style.color='var(--text-light)'" aria-label="LinkedIn Profile">
+                       <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================================================= -->
+        <!--                     技能栈部分                        -->
+        <!-- ======================================================= -->
+        <section id="skills" class="section-padding">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="section-title text-4xl font-bold" style="color: var(--text-bright);">My Skills</h2>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- 技能卡片 1: 前端 -->
+                <div class="p-6 rounded-lg text-center fade-in-up" style="background-color: var(--bg-card); border: 1px solid var(--border-color);">
+                    <h3 class="text-xl font-bold mb-4" style="color: var(--text-bright);">Frontend</h3>
+                    <!-- 在下方列表中修改或增删你的前端技能 -->
+                    <ul class="space-y-2 text-sm">
+                        <li>HTML5 & CSS3</li>
+                        <li>JavaScript (ES6+)</li>
+                        <li>React / Vue.js</li>
+                        <li>Tailwind CSS</li>
+                    </ul>
+                </div>
+                 <!-- 技能卡片 2: 后端 -->
+                <div class="p-6 rounded-lg text-center fade-in-up" style="transition-delay: 100ms; background-color: var(--bg-card); border: 1px solid var(--border-color);">
+                    <h3 class="text-xl font-bold mb-4" style="color: var(--text-bright);">Backend</h3>
+                    <!-- 在下方列表中修改或增删你的后端技能 -->
+                     <ul class="space-y-2 text-sm">
+                        <li>Node.js / Express</li>
+                        <li>Python / Django</li>
+                        <li>RESTful API</li>
+                        <li>GraphQL</li>
+                    </ul>
+                </div>
+                 <!-- 技能卡片 3: 数据库 -->
+                <div class="p-6 rounded-lg text-center fade-in-up" style="transition-delay: 200ms; background-color: var(--bg-card); border: 1px solid var(--border-color);">
+                    <h3 class="text-xl font-bold mb-4" style="color: var(--text-bright);">Databases</h3>
+                    <!-- 在下方列表中修改或增删你的数据库技能 -->
+                    <ul class="space-y-2 text-sm">
+                        <li>SQL (PostgreSQL)</li>
+                        <li>NoSQL (MongoDB)</li>
+                        <li>Firebase</li>
+                        <li>Database Design</li>
+                    </ul>
+                </div>
+                 <!-- 技能卡片 4: DevOps & 工具 -->
+                <div class="p-6 rounded-lg text-center fade-in-up" style="transition-delay: 300ms; background-color: var(--bg-card); border: 1px solid var(--border-color);">
+                    <h3 class="text-xl font-bold mb-4" style="color: var(--text-bright);">DevOps & Tools</h3>
+                    <!-- 在下方列表中修改或增删你的工具技能 -->
+                     <ul class="space-y-2 text-sm">
+                        <li>Git & GitHub</li>
+                        <li>Docker</li>
+                        <li>CI/CD</li>
+                        <li>Agile Methodologies</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================================================= -->
+        <!--                     项目经验部分                        -->
+        <!-- ======================================================= -->
+        <section id="projects" class="section-padding">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="section-title text-4xl font-bold" style="color: var(--text-bright);">My Projects</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- ======================================================= -->
+                <!--                  项目卡片 1 (开始)                      -->
+                <!--  在这里修改你的第一个项目信息。复制整个代码块来添加更多项目。 -->
+                <!-- ======================================================= -->
+                <div class="group rounded-lg border overflow-hidden fade-in-up transition-all duration-300" style="background-color: var(--bg-card); border-color: var(--border-color);">
+                    <!-- 项目演示链接 -->
+                    <a href="[Project_Demo_Link_1]" target="_blank" class="block">
+                        <div class="overflow-hidden">
+                           <!-- 项目截图: 替换下面的链接 -->
+                           <img src="https://placehold.co/600x400/1f2937/3b82f6?text=Project+1" alt="Project 1 Screenshot" class="w-full h-48 object-cover transform transition-transform duration-300 group-hover:scale-105">
+                        </div>
+                        <div class="p-6">
+                            <!-- 项目标题 -->
+                            <h3 class="text-xl font-bold mb-2 transition-colors duration-300" style="color: var(--text-bright);">[Project One Name]</h3>
+                            <!-- 项目简介 -->
+                            <p class="mb-4 text-sm" style="color: var(--text-light);">[A brief project description, highlighting core features and problems solved.]</p>
+                            <!-- 技术标签: 修改或增删下面的 <span> 标签 -->
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs font-semibold px-2.5 py-1 rounded" style="background-color: var(--accent-blue); color: white;">React</span>
+                                <span class="text-xs font-semibold px-2.5 py-1 rounded" style="background-color: #374151; color: var(--text-light);">Node.js</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <!-- ======================================================= -->
+                <!--                   项目卡片 1 (结束)                     -->
+                <!-- ======================================================= -->
+
+                 <!-- ======================================================= -->
+                <!--                  项目卡片 2 (开始)                      -->
+                <!-- ======================================================= -->
+                 <div class="group rounded-lg border overflow-hidden fade-in-up transition-all duration-300" style="transition-delay: 100ms; background-color: var(--bg-card); border-color: var(--border-color);">
+                    <a href="[Project_Demo_Link_2]" target="_blank" class="block">
+                         <div class="overflow-hidden">
+                           <img src="https://placehold.co/600x400/1f2937/2dd4bf?text=Project+2" alt="Project 2 Screenshot" class="w-full h-48 object-cover transform transition-transform duration-300 group-hover:scale-105">
+                        </div>
+                         <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2 transition-colors duration-300" style="color: var(--text-bright);">[Project Two Name]</h3>
+                            <p class="mb-4 text-sm" style="color: var(--text-light);">[A brief project description, highlighting core features and problems solved.]</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs font-semibold px-2.5 py-1 rounded" style="background-color: var(--accent-teal); color: var(--bg-dark);">Vue.js</span>
+                                 <span class="text-xs font-semibold px-2.5 py-1 rounded" style="background-color: #374151; color: var(--text-light);">Python</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <!-- ======================================================= -->
+                <!--                   项目卡片 2 (结束)                     -->
+                <!-- ======================================================= -->
+
+                <!-- ======================================================= -->
+                <!--                  项目卡片 3 (开始)                      -->
+                <!-- ======================================================= -->
+                <div class="group rounded-lg border overflow-hidden fade-in-up transition-all duration-300" style="transition-delay: 200ms; background-color: var(--bg-card); border-color: var(--border-color);">
+                    <a href="[Project_Demo_Link_3]" target="_blank" class="block">
+                         <div class="overflow-hidden">
+                            <img src="https://placehold.co/600x400/1f2937/818cf8?text=Project+3" alt="Project 3 Screenshot" class="w-full h-48 object-cover transform transition-transform duration-300 group-hover:scale-105">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2 transition-colors duration-300" style="color: var(--text-bright);">[Project Three Name]</h3>
+                            <p class="mb-4 text-sm" style="color: var(--text-light);">[A brief project description, highlighting core features and problems solved.]</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs font-semibold px-2.5 py-1 rounded" style="background-color: var(--accent-indigo); color: white;">TypeScript</span>
+                                <span class="text-xs font-semibold px-2.5 py-1 rounded" style="background-color: #374151; color: var(--text-light);">Firebase</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <!-- ======================================================= -->
+                <!--                   项目卡片 3 (结束)                     -->
+                <!-- ======================================================= -->
+            </div>
+        </section>
+
+        <!-- ======================================================= -->
+        <!--                     联系方式部分                        -->
+        <!-- ======================================================= -->
+        <section id="contact" class="text-center section-padding">
+            <div class="rounded-lg p-10 md:p-16 fade-in-up" style="background-color: var(--bg-card); border: 1px solid var(--border-color);">
+                 <h2 class="text-4xl font-bold" style="color: var(--text-bright);">Get In Touch</h2>
+                <p class="mt-4 text-lg max-w-xl mx-auto" style="color: var(--text-light);">
+                    I'm open to new challenges and collaboration. I look forward to hearing from you.
+                </p>
+                <div class="mt-8">
+                    <!-- 你的邮箱地址 -->
+                    <a href="mailto:pangkarol@gmail.com" class="text-xl font-semibold transition-colors duration-300" style="color: var(--accent-blue); --hover-color: var(--accent-teal);" onmouseover="this.style.color=this.style.getPropertyValue('--hover-color')" onmouseout="this.style.color='var(--accent-blue)'">
+                        pangkarol@gmail.com
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- ======================================================= -->
+    <!--                       页面页脚                          -->
+    <!-- ======================================================= -->
+    <footer class="text-center p-8 relative z-10 text-sm" style="color: var(--text-light);">
+        <!-- 修改你的名字和年份 -->
+        <p>&copy; 2024 Karol Pang. All Rights Reserved.</p>
+    </footer>
+
+    <!-- JavaScript 动画脚本，一般无需修改 -->
+    <script>
+        // Scroll fade-in animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); 
+                }
+            });
+        }, {
+            threshold: 0.15
+        });
+        document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
+

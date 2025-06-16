@@ -29,7 +29,6 @@
             color: var(--text-light);
             overflow-x: hidden; 
         }
-        /* 动态星空背景 */
         #galaxy-bg {
             position: fixed;
             top: 0;
@@ -49,8 +48,6 @@
             0%, 100% { opacity: 0; }
             50% { opacity: 1; }
         }
-
-        /* 悬浮发光导航栏 */
         .floating-nav {
             background: rgba(22, 27, 34, 0.6);
             backdrop-filter: blur(16px);
@@ -83,17 +80,31 @@
             z-index: -1;
             box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
         }
-
-        .card-item {
-            background-color: var(--bg-card);
+        
+        .skill-card {
+            background-color: var(--bg-dark);
             border: 1px solid var(--border-color);
             border-radius: 0.75rem;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            padding: 1.5rem;
+            text-align: left;
         }
-        .card-item:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
         }
+        .skill-card .skill-icon {
+            color: var(--text-light);
+            transition: color 0.3s ease;
+        }
+        .skill-card:hover .skill-icon {
+            color: var(--accent-teal);
+        }
+        .skill-card ul { list-style-type: none; padding: 0; }
+        .skill-card li { display: flex; align-items: center; margin-bottom: 0.5rem; }
+        .skill-card li svg { flex-shrink: 0; margin-right: 0.75rem; color: var(--accent-blue); }
+
         .project-card {
              background-color: var(--bg-card);
              border: 1px solid var(--border-color);
@@ -106,7 +117,6 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.3);
             border-color: var(--accent-blue);
         }
-
         .section-title::after {
             content: ''; display: block; margin: 12px auto 0; width: 70px; height: 4px;
             border-radius: 2px;
@@ -120,6 +130,9 @@
             opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
         .fade-in-up.visible { opacity: 1; transform: translateY(0); }
+        #copy-feedback {
+            transition: opacity 0.3s;
+        }
 
     </style>
 </head>
@@ -130,7 +143,7 @@
         <div id="nebula3" class="nebula"></div>
     </div>
 
-    <header id="main-header" class="sticky top-4 z-50">
+    <header class="sticky top-4 z-50">
         <nav id="main-nav" class="floating-nav container max-w-3xl mx-auto rounded-full px-4 py-2 flex justify-between items-center">
             <div class="flex items-center gap-2">
                  <a href="https://github.com/maboloshi/github-chinese?tab=readme-ov-file" target="_blank" class="p-2 rounded-full hover:bg-white/10 transition-colors">
@@ -177,50 +190,58 @@
             </div>
         </section>
 
-        <!-- ======================================================= -->
-        <!--              技能栈部分 (颜色块背景)                  -->
-        <!-- ======================================================= -->
-        <!-- 为这个 section 单独添加了 py-12 来增加上下高度 -->
-        <section id="skills" class="section-padding py-16" style="background-color: var(--bg-card);">
-            <div class="container mx-auto px-8">
+        <section id="skills" class="section-padding py-12" style="background-color: var(--bg-card);">
+            <div class="container mx-auto px-6">
                 <div class="text-center mb-16 fade-in-up">
-                    <h2 class="section-title text-4xl font-bold" style="color: var(--text-bright);">My Skills</h2>
+                    <h2 class="section-title text-4xl font-bold" style="color: var(--text-bright);">Skills</h2>
                 </div>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                    <div class="p-4 text-center fade-in-up card-item" style="background-color: var(--bg-dark);">
-                        <h3 class="text-xl font-bold mb-6" style="color: var(--text-bright);">Frontend</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="fade-in-up skill-card">
+                        <div class="flex items-center mb-4">
+                            <svg class="h-8 w-8 mr-4 skill-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+                            <h3 class="text-xl font-bold" style="color: var(--text-bright);">Frontend</h3>
+                        </div>
                         <ul class="space-y-2 text-sm">
-                            <li>HTML5 & CSS3</li>
-                            <li>JavaScript (ES6+)</li>
-                            <li>React / Vue.js</li>
-                            <li>Tailwind CSS</li>
+                            <li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>HTML5 & CSS3</li>
+                            <li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>JavaScript (ES6+)</li>
+                            <li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>React / Vue.js</li>
+                            <li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Tailwind CSS</li>
                         </ul>
                     </div>
-                    <div class="p-6 text-center fade-in-up card-item" style="transition-delay: 100ms; background-color: var(--bg-dark);">
-                        <h3 class="text-xl font-bold mb-2" style="color: var(--text-bright);">Backend</h3>
-                         <ul class="space-y-2 text-sm">
-                            <li>Node.js / Express</li>
-                            <li>Python / Django</li>
-                            <li>RESTful API</li>
-                            <li>GraphQL</li>
-                        </ul>
-                    </div>
-                    <div class="p-6 text-center fade-in-up card-item" style="transition-delay: 200ms; background-color: var(--bg-dark);">
-                        <h3 class="text-xl font-bold mb-2" style="color: var(--text-bright);">Databases</h3>
+                    <div class="fade-in-up skill-card" style="transition-delay: 100ms;">
+                         <div class="flex items-center mb-4">
+                            <svg class="h-8 w-8 mr-4 skill-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12c0 1.657-4.03 3-9 3s-9-1.343-9-3c0-1.657 4.03-3 9-3s9 1.343 9 3z"/><path d="M3 12v3c0 1.657 4.03 3 9 3s9-1.343 9-3v-3"/><path d="M3 6v3c0 1.657 4.03 3 9 3s9-1.343 9-3V6"/></svg>
+                            <h3 class="text-xl font-bold" style="color: var(--text-bright);">Backend</h3>
+                        </div>
                         <ul class="space-y-2 text-sm">
-                            <li>SQL (PostgreSQL)</li>
-                            <li>NoSQL (MongoDB)</li>
-                            <li>Firebase</li>
-                            <li>Database Design</li>
+                            <li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Node.js / Express</li>
+                            <li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Python / Django</li>
+                            <li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>RESTful API</li>
+                            <li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>GraphQL</li>
                         </ul>
                     </div>
-                    <div class="p-6 text-center fade-in-up card-item" style="transition-delay: 300ms; background-color: var(--bg-dark);">
-                        <h3 class="text-xl font-bold mb-2" style="color: var(--text-bright);">DevOps & Tools</h3>
+                    <div class="fade-in-up skill-card" style="transition-delay: 200ms;">
+                        <div class="flex items-center mb-4">
+                            <svg class="h-8 w-8 mr-4 skill-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7m0 0c0-2.21-3.582-4-8-4S4 4.79 4 7m0 0s8 4 8 4 8-4 8-4"/></svg>
+                            <h3 class="text-xl font-bold" style="color: var(--text-bright);">Databases</h3>
+                        </div>
+                        <ul class="space-y-2 text-sm">
+                            <li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>SQL (PostgreSQL)</li>
+                            <li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>NoSQL (MongoDB)</li>
+                            <li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Firebase</li>
+                            <li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Database Design</li>
+                        </ul>
+                    </div>
+                    <div class="fade-in-up skill-card" style="transition-delay: 300ms;">
+                        <div class="flex items-center mb-4">
+                           <svg class="h-8 w-8 mr-4 skill-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.096 2.572-1.065z"/><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                            <h3 class="text-xl font-bold" style="color: var(--text-bright);">DevOps & Tools</h3>
+                        </div>
                          <ul class="space-y-2 text-sm">
-                            <li>Git & GitHub</li>
-                            <li>Docker</li>
-                            <li>CI/CD</li>
-                            <li>Agile Methodologies</li>
+                            <li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Git & GitHub</li>
+                            <li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Docker</li>
+                            <li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>CI/CD</li>
+                            <li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Agile Methodologies</li>
                         </ul>
                     </div>
                 </div>
@@ -230,17 +251,17 @@
         <section id="projects" class="section-padding">
              <div class="container mx-auto px-6">
                 <div class="text-center mb-16 fade-in-up">
-                    <h2 class="section-title text-4xl font-bold" style="color: var(--text-bright);">My Projects</h2>
+                    <h2 class="section-title text-4xl font-bold" style="color: var(--text-bright);">Projects</h2>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <div class="group project-card fade-in-up">
                         <a href="[Project_Demo_Link_1]" target="_blank" class="block">
                             <div class="overflow-hidden">
-                               <img src="https://placehold.co/600x400/1f2937/3b82f6?text=Project+1" alt="Project 1 Screenshot" class="w-full h-48 object-cover transform transition-transform duration-300 group-hover:scale-105">
+                               <img src="https://images.unsplash.com/photo-1618761714954-0b8cd0026356?q=80&w=1470&auto=format&fit=crop" alt="Abstract Code Interface" class="w-full h-48 object-cover transform transition-transform duration-300 group-hover:scale-105">
                             </div>
                             <div class="p-6">
-                                <h3 class="text-xl font-bold mb-2" style="color: var(--text-bright);">[Project One Name]</h3>
-                                <p class="mb-4 text-sm" style="color: var(--text-light);">[A brief project description.]</p>
+                                <h3 class="text-xl font-bold mb-2" style="color: var(--text-bright);">SaaS Platform</h3>
+                                <p class="mb-4 text-sm" style="color: var(--text-light);">A scalable software-as-a-service platform with user authentication and data management.</p>
                                 <div class="flex flex-wrap gap-2">
                                     <span class="text-xs font-semibold px-2.5 py-1 rounded" style="background-color: var(--accent-blue); color: white;">React</span>
                                     <span class="text-xs font-semibold px-2.5 py-1 rounded" style="background-color: #374151; color: var(--text-light);">Node.js</span>
@@ -251,11 +272,11 @@
                      <div class="group project-card fade-in-up" style="transition-delay: 100ms;">
                         <a href="[Project_Demo_Link_2]" target="_blank" class="block">
                              <div class="overflow-hidden">
-                               <img src="https://placehold.co/600x400/1f2937/2dd4bf?text=Project+2" alt="Project 2 Screenshot" class="w-full h-48 object-cover transform transition-transform duration-300 group-hover:scale-105">
+                               <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1470&auto=format&fit=crop" alt="Data Analytics Dashboard" class="w-full h-48 object-cover transform transition-transform duration-300 group-hover:scale-105">
                             </div>
                              <div class="p-6">
-                                <h3 class="text-xl font-bold mb-2" style="color: var(--text-bright);">[Project Two Name]</h3>
-                                <p class="mb-4 text-sm" style="color: var(--text-light);">[A brief project description.]</p>
+                                <h3 class="text-xl font-bold mb-2" style="color: var(--text-bright);">Analytics Dashboard</h3>
+                                <p class="mb-4 text-sm" style="color: var(--text-light);">An interactive dashboard for data visualization and real-time analytics.</p>
                                 <div class="flex flex-wrap gap-2">
                                     <span class="text-xs font-semibold px-2.5 py-1 rounded" style="background-color: var(--accent-teal); color: var(--bg-dark);">Vue.js</span>
                                      <span class="text-xs font-semibold px-2.5 py-1 rounded" style="background-color: #374151; color: var(--text-light);">Python</span>
@@ -266,11 +287,11 @@
                     <div class="group project-card fade-in-up" style="transition-delay: 200ms;">
                         <a href="[Project_Demo_Link_3]" target="_blank" class="block">
                              <div class="overflow-hidden">
-                                <img src="https://placehold.co/600x400/1f2937/818cf8?text=Project+3" alt="Project 3 Screenshot" class="w-full h-48 object-cover transform transition-transform duration-300 group-hover:scale-105">
+                                <img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?q=80&w=1470&auto=format&fit=crop" alt="Mobile-First Application" class="w-full h-48 object-cover transform transition-transform duration-300 group-hover:scale-105">
                             </div>
                             <div class="p-6">
-                                <h3 class="text-xl font-bold mb-2" style="color: var(--text-bright);">[Project Three Name]</h3>
-                                <p class="mb-4 text-sm" style="color: var(--text-light);">[A brief project description.]</p>
+                                <h3 class="text-xl font-bold mb-2" style="color: var(--text-bright);">Mobile-First App</h3>
+                                <p class="mb-4 text-sm" style="color: var(--text-light);">A responsive mobile-first application with cloud synchronization features.</p>
                                 <div class="flex flex-wrap gap-2">
                                     <span class="text-xs font-semibold px-2.5 py-1 rounded" style="background-color: var(--accent-indigo); color: white;">TypeScript</span>
                                     <span class="text-xs font-semibold px-2.5 py-1 rounded" style="background-color: #374151; color: var(--text-light);">Firebase</span>
@@ -282,17 +303,24 @@
             </div>
         </section>
 
+        <!-- ======================================================= -->
+        <!--               联系方式部分 (简约版)                   -->
+        <!-- ======================================================= -->
         <section id="contact" class="section-padding text-center" style="background-color: var(--bg-card);">
              <div class="container mx-auto px-6">
-                <div class="fade-in-up">
+                <div class="fade-in-up max-w-2xl mx-auto">
                      <h2 class="section-title text-4xl font-bold" style="color: var(--text-bright);">Get In Touch</h2>
-                    <p class="mt-4 text-lg max-w-xl mx-auto" style="color: var(--text-light);">
-                        I'm open to new challenges and collaboration. I look forward to hearing from you.
+                    <p class="mt-4 text-lg" style="color: var(--text-light);">
+                        I'm open to new challenges and collaboration. Looking forward to hearing from you.
                     </p>
                     <div class="mt-8">
-                        <a href="mailto:pangkarol@gmail.com" class="text-xl font-semibold transition-colors duration-300" style="color: var(--accent-blue); --hover-color: var(--accent-teal);" onmouseover="this.style.color=this.style.getPropertyValue('--hover-color')" onmouseout="this.style.color='var(--accent-blue)'">
-                            pangkarol@gmail.com
-                        </a>
+                        <div class="inline-flex justify-center items-center gap-3 p-3 rounded-lg border-2 border-dashed" style="border-color: rgba(255,255,255,0.2);">
+                            <span id="email-address" class="text-lg font-mono text-gray-300">pangkarol@gmail.com</span>
+                            <button id="copy-button" title="Copy to clipboard" class="p-2 rounded-md hover:bg-gray-700 transition-colors">
+                                <svg id="copy-icon" class="h-6 w-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                                <span id="copy-feedback" class="hidden text-sm font-semibold" style="color: var(--accent-teal);">Copied!</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -300,7 +328,7 @@
     </main>
     
     <footer class="text-center p-8 relative z-10 text-sm" style="color: var(--text-light);">
-        <p>&copy; 2024 Karol Pang. All Rights Reserved.</p>
+        <p>&copy;  All Rights Reserved.</p>
     </footer>
 
     <!-- JavaScript 动画脚本 -->
@@ -386,6 +414,31 @@
                     galaxyBg.appendChild(star);
                 }
             }
+            
+            // Email copy functionality
+            const copyButton = document.getElementById('copy-button');
+            const emailSpan = document.getElementById('email-address');
+            const copyIcon = document.getElementById('copy-icon');
+            const feedbackSpan = document.getElementById('copy-feedback');
+
+            const copyEmail = () => {
+                 if(emailSpan && copyIcon && feedbackSpan){
+                    const email = emailSpan.textContent;
+                    navigator.clipboard.writeText(email).then(() => {
+                        copyIcon.classList.add('hidden');
+                        feedbackSpan.classList.remove('hidden');
+                        setTimeout(() => {
+                            copyIcon.classList.remove('hidden');
+                            feedbackSpan.classList.add('hidden');
+                        }, 2000);
+                    }).catch(err => {
+                        console.error('Failed to copy text: ', err);
+                    });
+                 }
+            };
+            
+            if(copyButton) copyButton.addEventListener('click', copyEmail);
+            if(emailSpan) emailSpan.addEventListener('click', copyEmail);
         });
     </script>
 </body>

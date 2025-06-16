@@ -50,9 +50,7 @@
             50% { opacity: 1; }
         }
 
-        /* ======================================================= */
-        /* 悬浮“胶囊”式导航栏样式 (开始)                  */
-        /* ======================================================= */
+        /* 悬浮发光导航栏 */
         .floating-nav {
             background: rgba(22, 27, 34, 0.6);
             backdrop-filter: blur(16px);
@@ -61,7 +59,6 @@
             box-shadow: 0 8px 32px rgba(0,0,0,0.3);
             position: relative;
         }
-        /* 导航栏内部的辉光效果 */
         .floating-nav::before {
             content: '';
             position: absolute;
@@ -77,7 +74,6 @@
             opacity: 0.5;
             pointer-events: none;
         }
-        /* 导航链接的动态指示器 */
         #nav-indicator {
             position: absolute;
             height: 36px;
@@ -87,9 +83,6 @@
             z-index: -1;
             box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
         }
-        /* ======================================================= */
-        /* 悬浮“胶囊”式导航栏样式 (结束)                  */
-        /* ======================================================= */
 
         .card-item {
             background-color: var(--bg-card);
@@ -137,22 +130,16 @@
         <div id="nebula3" class="nebula"></div>
     </div>
 
-    <!-- ======================================================= -->
-    <!--                      顶部导航栏                         -->
-    <!-- ======================================================= -->
-    <header class="sticky top-4 z-50">
-        <!-- 调整了 max-w-2xl 为 max-w-3xl 来进一步加宽导航栏 -->
+    <header id="main-header" class="sticky top-4 z-50">
         <nav id="main-nav" class="floating-nav container max-w-3xl mx-auto rounded-full px-4 py-2 flex justify-between items-center">
-            <!-- 社交图标 -->
             <div class="flex items-center gap-2">
-                 <a href="https://hahakalo.github.io/profile/" target="_blank" class="p-2 rounded-full hover:bg-white/10 transition-colors">
+                 <a href="https://github.com/maboloshi/github-chinese?tab=readme-ov-file" target="_blank" class="p-2 rounded-full hover:bg-white/10 transition-colors">
                     <svg class="h-5 w-5" style="color: var(--text-light);" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
                  </a>
                  <a href="[Your_LinkedIn_Link]" target="_blank" class="p-2 rounded-full hover:bg-white/10 transition-colors">
                     <svg class="h-5 w-5" style="color: var(--text-light);" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V9a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
                  </a>
             </div>
-            <!-- 导航链接 -->
             <div id="nav-links" class="hidden md:flex space-x-2 items-center relative">
                  <div id="nav-indicator"></div>
                  <a href="#about" class="nav-link font-medium transition-all duration-300 px-4 py-1.5" style="color: var(--text-light);">About</a>
@@ -160,16 +147,14 @@
                  <a href="#projects" class="nav-link font-medium transition-all duration-300 px-4 py-1.5" style="color: var(--text-light);">Projects</a>
                  <a href="#contact" class="nav-link font-medium transition-all duration-300 px-4 py-1.5" style="color: var(--text-light);">Contact</a>
             </div>
-             <!-- 下载按钮 -->
              <a href="[Your_Resume.pdf]" target="_blank" class="text-white text-sm font-semibold bg-blue-600 px-4 py-2 rounded-full shadow-lg hover:bg-blue-700 hover:scale-105 transition-all duration-300">
                 Download CV
             </a>
         </nav>
     </header>
 
-    <!-- 主体内容 -->
     <main class="relative z-10">
-        <section id="about" class="section-padding flex items-center min-h-[100vh]">
+        <section id="about" class="section-padding flex items-center min-h-[90vh]">
             <div class="container mx-auto px-6">
                 <div class="grid md:grid-cols-5 gap-10 items-center">
                     <div class="md:col-span-3 fade-in-up text-center md:text-left">
@@ -192,7 +177,11 @@
             </div>
         </section>
 
-        <section id="skills" class="section-padding" style="background-color: var(--bg-card);">
+        <!-- ======================================================= -->
+        <!--              技能栈部分 (颜色块背景)                  -->
+        <!-- ======================================================= -->
+        <!-- 为这个 section 单独添加了 py-12 来增加上下高度 -->
+        <section id="skills" class="section-padding py-6" style="background-color: var(--bg-card);">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16 fade-in-up">
                     <h2 class="section-title text-4xl font-bold" style="color: var(--text-bright);">My Skills</h2>

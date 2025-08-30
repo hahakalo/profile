@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="zh-CN" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- ======================================================= -->
-    <!--                      网站标题                          -->
+    <!--                       网站标题                          -->
     <!-- ======================================================= -->
-    <title>Karol Pang - Personal Portfolio</title>
+    <title>Karol Pang - 个人作品集 / Personal Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -63,7 +63,7 @@
             border-radius: 9999px;
             padding: 1px;
             background: linear-gradient(120deg, var(--accent-blue), var(--accent-teal));
-            -webkit-mask: 
+            -webkit-mask:  
                 linear-gradient(#fff 0 0) content-box, 
                 linear-gradient(#fff 0 0);
             -webkit-mask-composite: xor;
@@ -81,8 +81,8 @@
             box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
         }
         
-        .skill-card {
-            background-color: var(--bg-dark);
+        .skill-card, .card {
+            background-color: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: 0.75rem;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -90,9 +90,10 @@
             padding: 1.5rem;
             text-align: left;
         }
-        .skill-card:hover {
+        .skill-card:hover, .card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            border-color: var(--accent-blue);
         }
         .skill-card .skill-icon {
             color: var(--text-light);
@@ -101,22 +102,10 @@
         .skill-card:hover .skill-icon {
             color: var(--accent-teal);
         }
-        .skill-card ul { list-style-type: none; padding: 0; }
-        .skill-card li { display: flex; align-items: center; margin-bottom: 0.5rem; }
-        .skill-card li svg { flex-shrink: 0; margin-right: 0.75rem; color: var(--accent-blue); }
+        .skill-card ul, .card ul { list-style-type: none; padding-left: 0; }
+        .skill-card li, .card li { display: flex; align-items: flex-start; margin-bottom: 0.75rem; }
+        .skill-card li svg, .card li svg { flex-shrink: 0; margin-right: 0.75rem; color: var(--accent-blue); margin-top: 5px; }
 
-        .project-card {
-             background-color: var(--bg-card);
-             border: 1px solid var(--border-color);
-             border-radius: 0.75rem;
-             overflow:hidden;
-             transition: all 0.3s ease;
-        }
-        .project-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-            border-color: var(--accent-blue);
-        }
         .section-title::after {
             content: ''; display: block; margin: 12px auto 0; width: 70px; height: 4px;
             border-radius: 2px;
@@ -137,32 +126,29 @@
     </style>
 </head>
 <body>
-    <div id="galaxy-bg">
-        <div id="nebula1" class="nebula"></div>
-        <div id="nebula2" class="nebula"></div>
-        <div id="nebula3" class="nebula"></div>
-    </div>
+    <div id="galaxy-bg"></div>
 
     <header id="main-header" class="sticky top-4 z-50">
-        <nav id="main-nav" class="floating-nav container max-w-3xl mx-auto rounded-full px-4 py-2 flex justify-between items-center">
+        <nav id="main-nav" class="floating-nav container max-w-4xl mx-auto rounded-full px-4 py-2 flex justify-between items-center">
             <div class="flex items-center gap-2">
-                 <a href="https://hahakalo.github.io/profile/" target="_blank" class="p-2 rounded-full hover:bg-white/10 transition-colors">
+                 <a href="https://github.com/hahakalo" target="_blank" class="p-2 rounded-full hover:bg-white/10 transition-colors" title="GitHub">
                     <svg class="h-5 w-5" style="color: var(--text-light);" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
                  </a>
-                 <a href="[Your_LinkedIn_Link]" target="_blank" class="p-2 rounded-full hover:bg-white/10 transition-colors">
+                 <a href="[Your_LinkedIn_Link]" target="_blank" class="p-2 rounded-full hover:bg-white/10 transition-colors" title="LinkedIn">
                     <svg class="h-5 w-5" style="color: var(--text-light);" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V9a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
                  </a>
             </div>
-            <div id="nav-links" class="hidden md:flex space-x-2 items-center relative">
+            <div id="nav-links" class="hidden md:flex space-x-2 items-center relative text-sm">
                  <div id="nav-indicator"></div>
-                 <a href="#about" class="nav-link font-medium transition-all duration-300 px-4 py-1.5" style="color: var(--text-light);">About</a>
-                 <a href="#skills" class="nav-link font-medium transition-all duration-300 px-4 py-1.5" style="color: var(--text-light);">Skills</a>
-                 <a href="#projects" class="nav-link font-medium transition-all duration-300 px-4 py-1.5" style="color: var(--text-light);">Projects</a>
-                 <a href="#contact" class="nav-link font-medium transition-all duration-300 px-4 py-1.5" style="color: var(--text-light);">Contact</a>
+                 <a href="#about" class="nav-link font-medium transition-all duration-300 px-4 py-1.5" style="color: var(--text-light);">关于 / About</a>
+                 <a href="#experience" class="nav-link font-medium transition-all duration-300 px-4 py-1.5" style="color: var(--text-light);">经验 / Experience</a>
+                 <a href="#education" class="nav-link font-medium transition-all duration-300 px-4 py-1.5" style="color: var(--text-light);">教育 / Education</a>
+                 <a href="#skills" class="nav-link font-medium transition-all duration-300 px-4 py-1.5" style="color: var(--text-light);">技能 / Skills</a>
+                 <a href="#contact" class="nav-link font-medium transition-all duration-300 px-4 py-1.5" style="color: var(--text-light);">联系 / Contact</a>
             </div>
              <a href="[Your_Resume.pdf]" target="_blank" class="text-white text-sm font-semibold bg-blue-600 px-4 py-2 rounded-full shadow-lg hover:bg-blue-700 hover:scale-105 transition-all duration-300">
-                Download CV
-            </a>
+                简历 / CV
+             </a>
         </nav>
     </header>
 
@@ -171,17 +157,19 @@
             <div class="container mx-auto px-6">
                 <div class="grid md:grid-cols-5 gap-10 items-center">
                     <div class="md:col-span-3 fade-in-up text-center md:text-left">
-                        <h1 class="text-5xl md:text-7xl font-extrabold leading-tight" style="color: var(--text-bright);">Hello, <br>I'm Karol Pang</h1>
-                        <h2 class="mt-4 text-2xl md:text-3xl font-medium" style="color: var(--accent-blue);">Software Engineer | Full-Stack Developer</h2>
+                        <h1 class="text-5xl md:text-7xl font-extrabold leading-tight" style="color: var(--text-bright);">你好, <br>我是 Karol Pang</h1>
                         <p class="mt-8 max-w-2xl text-lg mx-auto md:mx-0" style="color: var(--text-light);">
-                            I am passionate about building beautiful and functional web applications using modern technologies. Currently seeking new opportunities to contribute to a team's technical innovation.
+                            我是一名充满热情的IT专业人士，在系统管理、网络安全和流程自动化领域拥有坚实的基础。我善于通过数据分析和脚本技术解决复杂的技术挑战，并对提升效率充满执着。现在，我渴望将我的技术背景、分析能力以及在AI应用搭建方面的实践经验，投入到AI产品培训生的角色中，为智能产品的设计、优化与实现贡献我的力量。
+                        </p>
+                        <p class="mt-4 max-w-2xl text-md mx-auto md:mx-0 text-gray-400">
+                            As a passionate IT professional with a solid foundation in systems management, cybersecurity, and process automation, I excel at solving complex technical challenges through data analysis and scripting. Driven by a relentless pursuit of efficiency, I am now eager to apply my technical background, analytical skills, and hands-on experience in building AI applications to a role as an AI Product Trainee, where I can contribute to the design, optimization, and implementation of intelligent products.
                         </p>
                     </div>
                     <div class="md:col-span-2 flex justify-center md:justify-end fade-in-up" style="transition-delay: 100ms;">
                         <div class="relative w-64 h-64 lg:w-72 lg:h-72">
                             <div class="absolute inset-0 rounded-full blur-xl" style="background: linear-gradient(45deg, var(--accent-blue), var(--accent-teal)); opacity: 0.6;"></div>
-                            <img src="https://placehold.co/300x300/1f2937/d1d5db?text=Your+Headshot" 
-                                 alt="Karol Pang Headshot" 
+                            <img src="https://i.postimg.cc/SsDZtZkT/image.png" 
+                                 alt="Karol Pang 头像" 
                                  class="relative w-full h-full rounded-full object-cover border-4" 
                                  style="border-color: var(--bg-card);">
                         </div>
@@ -189,145 +177,211 @@
                 </div>
             </div>
         </section>
+        
+        <section id="experience" class="section-padding">
+             <div class="container mx-auto px-6">
+                 <div class="text-center mb-16 fade-in-up">
+                     <h2 class="section-title text-4xl font-bold" style="color: var(--text-bright);">专业经验与项目实践 / Experience & Projects</h2>
+                 </div>
+                 <div class="space-y-12">
+                     <!-- AI Project Experience Card -->
+                     <div class="card fade-in-up p-8">
+                        <h3 class="text-2xl font-bold mb-2" style="color: var(--text-bright);">AI实践与应用探索</h3>
+                        <p class="text-sm text-gray-400">AI Practice and Application Exploration</p>
+                        <div class="grid md:grid-cols-2 gap-x-8 gap-y-4 text-sm mt-4">
+                            <ul class="space-y-3">
+                                <li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg><span>**0-1应用搭建 / 0-to-1 App Building:** 自主搭建个人对话Agent (Ollama + Dify + DeepSeek)，探索技术落地全过程。</span></li>
+                                <li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg><span>**AI辅助开发 / AI-Assisted Development:** 借助AI编程工具，独立完成个人网站与微信小程序的设计开发。</span></li>
+                            </ul>
+                            <ul class="space-y-3">
+                                <li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg><span>**效率工具集 / Efficiency Toolkit:** 将DeepSeek模型集成至iOS快捷指令，实现AI随手调用、即时响应。</span></li>
+                                <li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"/></svg><span>**学习与工作赋能 / Learning & Work Empowerment:** 使用扣子(Coze)定制背单词Agent，利用AI知识库构建个人知识体系，加速信息处理。</span></li>
+                            </ul>
+                        </div>
+                     </div>
 
-        <section id="skills" class="section-padding py-12" style="background-color: var(--bg-card);">
+                     <!-- Career Path Section -->
+                    <div class="fade-in-up" style="transition-delay: 100ms;">
+                        <h3 class="text-2xl font-bold text-center my-12" style="color: var(--text-bright);">职业成长路径 / Career Path</h3>
+                        
+                        <!-- CICC Experience Card (Most recent) -->
+                        <div class="card p-8 mb-8">
+                            <h3 class="text-2xl font-bold mb-2" style="color: var(--text-bright);">IT / PMO | 中国国际金融股份有限公司 (CICC)</h3>
+                            <p class="text-md mb-6" style="color: var(--text-light);">2020年7月 – 至今 / July 2020 – Present</p>
+                            <div class="grid md:grid-cols-2 gap-x-8 gap-y-6 text-left">
+                                <div>
+                                    <h4 class="text-lg font-semibold mb-2 text-blue-400">战略IT管理与成本控制 / Strategic IT & Cost Management</h4>
+                                    <ul class="list-disc list-inside space-y-2 text-sm">
+                                        <li>负责为团队制定周期性汇报，系统总结阶段工作成果、问题与后续计划，协调资源、把控进度。</li>
+                                        <li>跟踪预算执行进度，结合公司业务战略，进行预算分析与调整，实施成本控制管理。</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold mb-2 text-teal-400">全球化安全体系建设 / Global Security Architecture</h4>
+                                    <ul class="list-disc list-inside space-y-2 text-sm">
+                                        <li>领导跨越6个全球办公室的安全软件（NAC, EDR, AV）部署项目。</li>
+                                        <li>负责堡垒机系统的运维、权限管理、合规审计与故障排查。</li>
+                                        <li>响应安全告警，高效解决各类技术难题。</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold mb-2 text-indigo-400">自动化与流程优化 / Automation & Process Optimization</h4>
+                                    <ul class="list-disc list-inside space-y-2 text-sm">
+                                         <li>打造RPA机器人与自动化脚本，赋能IT运维智能化，提高团队运营效率。</li>
+                                         <li>针对20人团队，构建了覆盖预算、立项、采购到结算的全流程数字化协同平台，打破数据孤岛，实现业务闭环，最终推动团队内部运营效率提升80%。</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold mb-2 text-blue-400">供应商与项目管理 / Vendor & Project Management</h4>
+                                    <ul class="list-disc list-inside space-y-2 text-sm">
+                                        <li>管理供应商关系、服务协议与绩效评估。</li>
+                                        <li>协调关键IT项目，如数据中心迁移、服务器升级等。</li>
+                                        <li>全面统筹 10 人外包团队的服务管理工作，实现外包服务全周期平稳推进</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Previous Experiences Grid -->
+                        <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-8">
+                            <div class="card p-6">
+                                <h4 class="text-lg font-bold text-bright">顾问 / Consultant</h4>
+                                <p class="text-sm text-light mt-1">用友（香港） | 2020.04 - 2020.07</p>
+                                <ul class="mt-4 space-y-2 text-sm">
+                                    <li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg><div><span>为业务系统实施定义项目范围并制定企业解决方案。</span><p class="text-xs text-gray-400 mt-1">Defined project scope and formulated enterprise solutions for business system implementation.</p></div></li>
+                                    <li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg><div><span>参与编程测试，开发定制化功能模块。</span><p class="text-xs text-gray-400 mt-1">Participated in programming tests and developed customized function modules.</p></div></li>
+                                    <li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg><div><span>进行系统培训，确保系统平稳上线与用户熟练使用。</span><p class="text-xs text-gray-400 mt-1">Conducted system training to ensure smooth go-live and user proficiency.</p></div></li>
+                                </ul>
+                            </div>
+                            <div class="card p-6">
+                                <h4 class="text-lg font-bold text-bright">实施工程师 / Implementation Engineer</h4>
+                                <p class="text-sm text-light mt-1">蓝凌软件（香港） | 2018.10 - 2020.04</p>
+                                <ul class="mt-4 space-y-2 text-sm">
+                                    <li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg><div><span>负责OA及ERP系统的配置、部署与脚本安装。</span><p class="text-xs text-gray-400 mt-1">In charge of the configuration and deployment of OA and ERP systems.</p></div></li>
+                                    <li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg><div><span>解决Web、移动端与服务器的连接问题，保障用户体验。</span><p class="text-xs text-gray-400 mt-1">Resolved connection issues between Web/mobile terminals and the server.</p></div></li>
+                                    <li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg><div><span>编写用户手册并提供深度培训，管理用户预期。</span><p class="text-xs text-gray-400 mt-1">Designed user manuals and provided in-depth training to manage user expectations.</p></div></li>
+                                </ul>
+                            </div>
+                             <div class="card p-6">
+                                <h4 class="text-lg font-bold text-bright">质量保证工程师 / QA Engineer</h4>
+                                <p class="text-sm text-light mt-1">网易游戏（广州） | 2017.03 - 2018.08</p>
+                                <ul class="mt-4 space-y-2 text-sm">
+                                    <li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg><div><span>负责百万日活MMORPG及MOBA手游的质量保证工作。</span><p class="text-xs text-gray-400 mt-1">In charge of QA for MMORPG (1M+ DAU) and MOBA mobile games.</p></div></li>
+                                    <li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg><div><span>开发自动化测试脚本，快速定位回归问题。</span><p class="text-xs text-gray-400 mt-1">Developed test scripts to automate testing and quickly identify regression issues.</p></div></li>
+                                    <li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg><div><span>通过修改Lua代码和MongoDB语句，直接参与Bug修复。</span><p class="text-xs text-gray-400 mt-1">Actively participated in bug fixing by modifying Lua codes and MongoDB statements.</p></div></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                 </div>
+             </div>
+        </section>
+
+        <section id="education" class="section-padding py-12" style="background-color: var(--bg-card);">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16 fade-in-up">
-                    <h2 class="section-title text-4xl font-bold" style="color: var(--text-bright);">Skills</h2>
+                    <h2 class="section-title text-4xl font-bold" style="color: var(--text-bright);">教育与认证 / Education & Certifications</h2>
                 </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <div class="fade-in-up skill-card">
-                        <div class="flex items-center mb-4">
-                            <svg class="h-8 w-8 mr-4 skill-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
-                            <h3 class="text-xl font-bold" style="color: var(--text-bright);">Frontend</h3>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Education -->
+                    <div class="fade-in-up">
+                        <h3 class="text-2xl font-bold mb-6 text-center" style="color: var(--text-bright);">教育背景 / Education</h3>
+                        <div class="space-y-6">
+                            <div class="card p-6">
+                                <h4 class="font-bold text-teal-400">环境、社会及管治与可持续发展理学硕士</h4>
+                                <p class="text-sm text-gray-400">MSc in ESG and Sustainability</p>
+                                <p class="text-sm mt-2">香港理工大学 | 2023 - 2025</p>
+                            </div>
+                            <div class="card p-6">
+                                <h4 class="font-bold text-teal-400">资讯科技深造文凭 (优异)</h4>
+                                <p class="text-sm text-gray-400">Postgraduate Diploma in IT (Merit)</p>
+                                <p class="text-sm mt-2">香港大学专业进修学院 | 2020 - 2021</p>
+                            </div>
+                            <div class="card p-6">
+                                <h4 class="font-bold text-teal-400">软件工程学士 (优秀毕业生)</h4>
+                                <p class="text-sm text-gray-400">Bachelor of Software Engineering (Outstanding Graduates)</p>
+                                <p class="text-sm mt-2">广东科技学院 | 2013 - 2017</p>
+                            </div>
                         </div>
-                        <ul class="space-y-2 text-sm">
-                            <li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>HTML5 & CSS3</li>
-                            <li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>JavaScript (ES6+)</li>
-                            <li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>React / Vue.js</li>
-                            <li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Tailwind CSS</li>
-                        </ul>
+                    </div>
+                    <!-- Certifications -->
+                    <div class="fade-in-up" style="transition-delay: 100ms;">
+                        <h3 class="text-2xl font-bold mb-6 text-center" style="color: var(--text-bright);">专业认证 / Certifications</h3>
+                        <div class="card p-6">
+                            <ul class="space-y-3 text-sm">
+                                <li><div class="flex justify-between items-center"><span><svg class="inline h-5 w-5 mr-2 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>Project Management Professional (PMP)</span> <span class="text-gray-400">01/2023</span></div></li>
+                                <li><div class="flex justify-between items-center"><span><svg class="inline h-5 w-5 mr-2 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>ITIL Foundation Certificate</span> <span class="text-gray-400">11/2022</span></div></li>
+                                <li><div class="flex justify-between items-center"><span><svg class="inline h-5 w-5 mr-2 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>System Integration Project Mgmt Engineer</span> <span class="text-gray-400">01/2018</span></div></li>
+                                <li><div class="flex justify-between items-center"><span><svg class="inline h-5 w-5 mr-2 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>National Computer Rank Exam (JAVA L2)</span> <span class="text-gray-400">03/2016</span></div></li>
+                                <li><div class="flex justify-between items-center"><span><svg class="inline h-5 w-5 mr-2 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>National Qual. Level 4 (SQL Server)</span> <span class="text-gray-400">03/2015</span></div></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="section-padding py-12">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16 fade-in-up">
+                    <h2 class="section-title text-4xl font-bold" style="color: var(--text-bright);">专业技能 / Skills</h2>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="fade-in-up skill-card">
+                        <div class="flex items-center mb-4"><svg class="h-8 w-8 mr-4 skill-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0ZM10.5 12h3" /></svg><h3 class="text-xl font-bold" style="color: var(--text-bright);">AI & 大模型 / AI & LLM</h3></div>
+                        <ul class="space-y-2 text-sm"><li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Dify</li><li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>DeepSeek (LLMs)</li><li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Ollama</li></ul>
                     </div>
                     <div class="fade-in-up skill-card" style="transition-delay: 100ms;">
-                         <div class="flex items-center mb-4">
-                            <svg class="h-8 w-8 mr-4 skill-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12c0 1.657-4.03 3-9 3s-9-1.343-9-3c0-1.657 4.03-3 9-3s9 1.343 9 3z"/><path d="M3 12v3c0 1.657 4.03 3 9 3s9-1.343 9-3v-3"/><path d="M3 6v3c0 1.657 4.03 3 9 3s9-1.343 9-3V6"/></svg>
-                            <h3 class="text-xl font-bold" style="color: var(--text-bright);">Backend</h3>
-                        </div>
-                        <ul class="space-y-2 text-sm">
-                            <li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Node.js / Express</li>
-                            <li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Python / Django</li>
-                            <li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>RESTful API</li>
-                            <li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>GraphQL</li>
-                        </ul>
+                        <div class="flex items-center mb-4"><svg class="h-8 w-8 mr-4 skill-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 11.667 0l3.181-3.183m-4.991-2.691v-4.992a4.125 4.125 0 0 1 4.125-4.125h.001" /></svg><h3 class="text-xl font-bold" style="color: var(--text-bright);">自动化 / Automation</h3></div>
+                        <ul class="space-y-2 text-sm"><li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>RPA (机器人流程自动化)</li><li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>VBA</li><li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Python (基础)</li><li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>BAT/Shell 脚本</li></ul>
                     </div>
                     <div class="fade-in-up skill-card" style="transition-delay: 200ms;">
-                        <div class="flex items-center mb-4">
-                            <svg class="h-8 w-8 mr-4 skill-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7m0 0c0-2.21-3.582-4-8-4S4 4.79 4 7m0 0s8 4 8 4 8-4 8-4"/></svg>
-                            <h3 class="text-xl font-bold" style="color: var(--text-bright);">Databases</h3>
-                        </div>
-                        <ul class="space-y-2 text-sm">
-                            <li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>SQL (PostgreSQL)</li>
-                            <li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>NoSQL (MongoDB)</li>
-                            <li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Firebase</li>
-                            <li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Database Design</li>
-                        </ul>
+                        <div class="flex items-center mb-4"><svg class="h-8 w-8 mr-4 skill-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-.1-.664m-5.8 0A2.251 2.251 0 0 1 5.25 6h.008a2.25 2.25 0 0 1 2.242 2.15 2.25 2.25 0 0 0 2.25 2.25h1.521a2.25 2.25 0 0 0 2.174-1.833 2.25 2.25 0 0 0-1.28-2.41a2.25 2.25 0 0 0-2.834.475M19.5 12h-15" /></svg><h3 class="text-xl font-bold" style="color: var(--text-bright);">项目管理与分析 / PM & Analysis</h3></div>
+                        <ul class="space-y-2 text-sm"><li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>PMP & ITIL</li><li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>业务分析 / Business Analysis (BA)</li><li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>IT治理与合规 / IT Governance</li><li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>敏捷项目管理 / Agile PM</li></ul>
                     </div>
                     <div class="fade-in-up skill-card" style="transition-delay: 300ms;">
-                        <div class="flex items-center mb-4">
-                           <svg class="h-8 w-8 mr-4 skill-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.096 2.572-1.065z"/><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                            <h3 class="text-xl font-bold" style="color: var(--text-bright);">DevOps & Tools</h3>
-                        </div>
-                         <ul class="space-y-2 text-sm">
-                            <li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Git & GitHub</li>
-                            <li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Docker</li>
-                            <li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>CI/CD</li>
-                            <li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Agile Methodologies</li>
-                        </ul>
+                        <div class="flex items-center mb-4"><svg class="h-8 w-8 mr-4 skill-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 20.417l4.5-4.5M12 2.944a11.955 11.955 0 00-8.618 3.04m17.236-3.04a12.02 12.02 0 01-4.5 4.5m4.5-4.5L15 7.5"/></svg><h3 class="text-xl font-bold" style="color: var(--text-bright);">安全工具 / Security Tools</h3></div>
+                        <ul class="space-y-2 text-sm"><li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>堡垒机 / Bastion Host</li><li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>检测响应、网络准入 / EDR, NAC</li><li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>防病毒 / Antivirus (Symantec, 亚信)</li><li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>证书管理 / Certificate Management</li></ul>
+                    </div>
+                    <div class="fade-in-up skill-card" style="transition-delay: 400ms;">
+                        <div class="flex items-center mb-4"><svg class="h-8 w-8 mr-4 skill-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25A2.25 2.25 0 0 1 5.25 3h9.75a2.25 2.25 0 0 1 2.25 2.25Z" /></svg><h3 class="text-xl font-bold" style="color: var(--text-bright);">系统 & 软件 / Systems & Software</h3></div>
+                        <ul class="space-y-2 text-sm"><li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Windows Server, Linux</li><li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>VMware vSphere</li><li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Docker</li><li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Ali Cloud</li></ul>
+                    </div>
+                    <div class="fade-in-up skill-card" style="transition-delay: 500ms;">
+                        <div class="flex items-center mb-4"><svg class="h-8 w-8 mr-4 skill-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m-7.5-2.962a3.75 3.75 0 0 1 5.25 0m4.5 0a3.75 3.75 0 0 1 5.25 0M4.5 19.5a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3h15a3 3 0 0 1 3 3v10.5a3 3 0 0 1-3 3h-15Z" /></svg><h3 class="text-xl font-bold" style="color: var(--text-bright);">协作工具 / Collaboration Tools</h3></div>
+                        <ul class="space-y-2 text-sm"><li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>飞书、企业微信 / Feishu, WeCom</li><li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>移动设备邮箱 / Mobile Email</li><li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Office Suite (精通Excel)</li><li><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Visio, Xmind</li></ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="projects" class="section-padding">
+        <section id="contact" class="section-padding text-center">
              <div class="container mx-auto px-6">
-                <div class="text-center mb-16 fade-in-up">
-                    <h2 class="section-title text-4xl font-bold" style="color: var(--text-bright);">Projects</h2>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="group project-card fade-in-up">
-                        <a href="[Project_Demo_Link_1]" target="_blank" class="block">
-                            <div class="overflow-hidden">
-                               <img src="https://images.unsplash.com/photo-1618761714954-0b8cd0026356?q=80&w=1470&auto=format&fit=crop" alt="Abstract Code Interface" class="w-full h-48 object-cover transform transition-transform duration-300 group-hover:scale-105">
-                            </div>
-                            <div class="p-6">
-                                <h3 class="text-xl font-bold mb-2" style="color: var(--text-bright);">SaaS Platform</h3>
-                                <p class="mb-4 text-sm" style="color: var(--text-light);">A scalable software-as-a-service platform with user authentication and data management.</p>
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="text-xs font-semibold px-2.5 py-1 rounded" style="background-color: var(--accent-blue); color: white;">React</span>
-                                    <span class="text-xs font-semibold px-2.5 py-1 rounded" style="background-color: #374151; color: var(--text-light);">Node.js</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                     <div class="group project-card fade-in-up" style="transition-delay: 100ms;">
-                        <a href="[Project_Demo_Link_2]" target="_blank" class="block">
-                             <div class="overflow-hidden">
-                               <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1470&auto=format&fit=crop" alt="Data Analytics Dashboard" class="w-full h-48 object-cover transform transition-transform duration-300 group-hover:scale-105">
-                            </div>
-                             <div class="p-6">
-                                <h3 class="text-xl font-bold mb-2" style="color: var(--text-bright);">Analytics Dashboard</h3>
-                                <p class="mb-4 text-sm" style="color: var(--text-light);">An interactive dashboard for data visualization and real-time analytics.</p>
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="text-xs font-semibold px-2.5 py-1 rounded" style="background-color: var(--accent-teal); color: var(--bg-dark);">Vue.js</span>
-                                     <span class="text-xs font-semibold px-2.5 py-1 rounded" style="background-color: #374151; color: var(--text-light);">Python</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="group project-card fade-in-up" style="transition-delay: 200ms;">
-                        <a href="[Project_Demo_Link_3]" target="_blank" class="block">
-                             <div class="overflow-hidden">
-                                <img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?q=80&w=1470&auto=format&fit=crop" alt="Mobile-First Application" class="w-full h-48 object-cover transform transition-transform duration-300 group-hover:scale-105">
-                            </div>
-                            <div class="p-6">
-                                <h3 class="text-xl font-bold mb-2" style="color: var(--text-bright);">Mobile-First App</h3>
-                                <p class="mb-4 text-sm" style="color: var(--text-light);">A responsive mobile-first application with cloud synchronization features.</p>
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="text-xs font-semibold px-2.5 py-1 rounded" style="background-color: var(--accent-indigo); color: white;">TypeScript</span>
-                                    <span class="text-xs font-semibold px-2.5 py-1 rounded" style="background-color: #374151; color: var(--text-light);">Firebase</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="section-padding text-center" style="background-color: var(--bg-card);">
-             <div class="container mx-auto px-6">
-                <div class="fade-in-up max-w-2xl mx-auto">
-                     <h2 class="section-title text-4xl font-bold" style="color: var(--text-bright);">Get In Touch</h2>
-                    <p class="mt-4 text-lg" style="color: var(--text-light);">
-                        I'm open to new challenges and collaboration. I look forward to hearing from you.
-                    </p>
-                    <div class="mt-8">
-                        <div class="inline-flex justify-center items-center gap-4 p-3 rounded-lg border-2 border-dashed" style="border-color: rgba(255,255,255,0.2);">
-                            <!-- 在这里替换成你的可爱头像链接 https://i.postimg.cc/SsDZtZkT/image.png -->
-                            <img src="^_^" alt="Contact Avatar" class="h-12 w-12 rounded-full">
-                            <span id="email-address" class="text-lg font-mono text-gray-300">pangkarol@gmail.com</span>
-                            <button id="copy-button" title="Copy to clipboard" class="p-2 rounded-md hover:bg-gray-700 transition-colors">
-                                <svg id="copy-icon" class="h-6 w-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
-                                <span id="copy-feedback" class="hidden text-sm font-semibold" style="color: var(--accent-teal);">Copied!</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                 <div class="fade-in-up max-w-2xl mx-auto">
+                      <h2 class="section-title text-4xl font-bold" style="color: var(--text-bright);">联系我 / Contact Me</h2>
+                     <p class="mt-4 text-lg" style="color: var(--text-light);">
+                         我乐于接受新的挑战与合作机会，期待您的联系。
+                     </p>
+                     <p class="mt-2 text-md text-gray-400">
+                         I am open to new challenges and collaborations. I look forward to hearing from you.
+                     </p>
+                     <div class="mt-8">
+                         <div class="inline-flex justify-center items-center gap-4 p-3 rounded-lg border-2 border-dashed" style="border-color: rgba(255,255,255,0.2);">
+                             <img src="https://i.postimg.cc/SsDZtZkT/image.png" alt="联系头像" class="h-12 w-12 rounded-full">
+                             <span id="email-address" class="text-lg font-mono text-gray-300">peacekayoo@gmail.com</span>
+                             <button id="copy-button" title="复制到剪贴板" class="p-2 rounded-md hover:bg-gray-700 transition-colors">
+                                 <svg id="copy-icon" class="h-6 w-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                                 <span id="copy-feedback" class="hidden text-sm font-semibold" style="color: var(--accent-teal);">已复制! / Copied!</span>
+                             </button>
+                         </div>
+                     </div>
+                 </div>
+             </div>
         </section>
     </main>
     
     <footer class="text-center p-8 relative z-10 text-sm" style="color: var(--text-light);">
-        <p>&copy; All Rights Reserved.</p>
+        <p>&copy; 2025 Karol Pang. 保留所有权利。 / All Rights Reserved.</p>
     </footer>
 
     <a href="#" id="to-top-button" class="fixed bottom-8 right-8 z-50 w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-opacity duration-300 opacity-0 pointer-events-none" style="background-color: var(--bg-card); border: 1px solid var(--border-color);">
@@ -345,7 +399,7 @@
                         fadeInObserver.unobserve(entry.target); 
                     }
                 });
-            }, { threshold: 0.15 });
+            }, { threshold: 0.1 });
             document.querySelectorAll('.fade-in-up').forEach(el => fadeInObserver.observe(el));
 
             const header = document.getElementById('main-header');
@@ -373,17 +427,19 @@
             const activateNavLink = () => {
                 if (!navIndicator) return;
 
-                let currentSectionId = '';
+                let currentSectionId = 'about';
                 const scrollEndOffset = 50; 
                 
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (window.scrollY >= sectionTop - 150) {
+                        currentSectionId = section.getAttribute('id');
+                    }
+                });
+                
                 if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - scrollEndOffset) {
-                     currentSectionId = sections[sections.length - 1].getAttribute('id');
-                } else {
-                    sections.forEach(section => {
-                        if (window.scrollY >= section.offsetTop - 150) {
-                            currentSectionId = section.getAttribute('id');
-                        }
-                    });
+                     const lastSection = sections[sections.length - 1];
+                     if(lastSection) currentSectionId = lastSection.getAttribute('id');
                 }
 
                 let activeLink = null;
@@ -403,7 +459,8 @@
             
             window.addEventListener('scroll', activateNavLink);
             window.addEventListener('resize', activateNavLink);
-            activateNavLink();
+            // Use a timeout to ensure correct initial position after all elements are rendered
+            setTimeout(activateNavLink, 100);
 
             const galaxyBg = document.getElementById('galaxy-bg');
             if (galaxyBg) {
@@ -434,16 +491,23 @@
             const copyEmail = () => {
                  if(emailSpan && copyIcon && feedbackSpan){
                     const email = emailSpan.textContent;
-                    navigator.clipboard.writeText(email).then(() => {
+                    const textArea = document.createElement("textarea");
+                    textArea.value = email;
+                    document.body.appendChild(textArea);
+                    textArea.focus();
+                    textArea.select();
+                    try {
+                        document.execCommand('copy');
                         copyIcon.classList.add('hidden');
                         feedbackSpan.classList.remove('hidden');
                         setTimeout(() => {
                             copyIcon.classList.remove('hidden');
                             feedbackSpan.classList.add('hidden');
                         }, 2000);
-                    }).catch(err => {
-                        console.error('Failed to copy text: ', err);
-                    });
+                    } catch (err) {
+                        console.error('Fallback: Oops, unable to copy', err);
+                    }
+                    document.body.removeChild(textArea);
                  }
             };
             
